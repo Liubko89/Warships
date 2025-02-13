@@ -1,0 +1,14 @@
+.list {
+  list-style: none;
+  border: 1px solid #ccc;
+  width: max-content;
+  margin: 0 auto 32px;
+
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-columns: repeat(10, 1fr);
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
