@@ -1,9 +1,9 @@
 import css from "./Cell.module.css";
 
-const Cell = ({ id }) => {
+const Cell = () => {
   return (
     <li>
-      <div className={css.cell}>{id}</div>
+      <div className={css.cell}></div>
     </li>
   );
 };
