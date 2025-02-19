@@ -10,3 +10,17 @@
     background-color: blue;
   }
 }
+
+.cellFilled {
+  background-color: rgb(19, 14, 62);
+}
+
+.cellWounded {
+  background-color: rgb(229, 147, 232);
+}
+.seeKilled {
+  background-color: rgb(196, 11, 33);
+}
+.cellChecked {
+  background-color: rgb(152, 152, 156);
+}

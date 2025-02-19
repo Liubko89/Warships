@@ -6,9 +6,7 @@ const Field = ({ list }) => {
   return (
     <ul className={css.list}>
       {list.map((cell) => {
-        console.log(cell);
-
-        return <Cell key={nanoid()} />;
+        return <Cell key={nanoid()} cell={cell} />;
       })}
     </ul>
   );

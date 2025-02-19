@@ -8,6 +8,12 @@ export const getFirstField = async () => {
   return data;
 };
 
+export const updateFirstField = async (arr) => {
+  const { data } = await axios.post("firstcells");
+
+  return data;
+};
+
 export const getSecondField = async () => {
   const { data } = await axios.get("secondcells");
   return data;

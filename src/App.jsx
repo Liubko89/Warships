@@ -3,18 +3,23 @@ import Field from "./components/Field/Field";
 import useFetchData from "./customHooks/fetchData";
 
 function App() {
-  const { field1, field2, isLoading, isError, errorMessage } = useFetchData();
+  const { battleField_1, battleField_2, isLoading, errorMessage } =
+    useFetchData();
 
   return (
     <>
       {isLoading && <div>Loading...</div>}
-      {isError && <div>{errorMessage}</div>}
-      {!isError && !isLoading && Array.isArray(field1) && field1.length > 0 && (
-        <Field list={field1} />
-      )}
-      {!isError && !isLoading && Array.isArray(field2) && field2.length > 0 && (
-        <Field list={field2} />
-      )}
+      {errorMessage && <div>{errorMessage}</div>}
+
+      {!errorMessage &&
+        !isLoading &&
+        Array.isArray(battleField_1) &&
+        battleField_1.length > 0 && <Field list={battleField_1} />}
+
+      {!errorMessage &&
+        !isLoading &&
+        Array.isArray(battleField_2) &&
+        battleField_2.length > 0 && <Field list={battleField_2} />}
     </>
   );
 }
