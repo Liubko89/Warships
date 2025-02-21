@@ -5,27 +5,30 @@ axios.defaults.baseURL = "https://67ae61519e85da2f020d5545.mockapi.io";
 export const getFirstField = async () => {
   const { data } = await axios.get("firstcells");
 
-  return data;
+  return data[0].cells;
 };
 
-export const updateFirstField = async (arr) => {
-  const { data } = await axios.post("firstcells");
+export const updateCellByIdInFild_1 = async (body) => {
+  const { data } = await axios.put(`firstcells/1`, { cells: body });
+  return data.cells;
+};
 
-  return data;
+export const resetFild_1 = async (body) => {
+  const { data } = await axios.put("firstcells/1", body);
+  return data.cells;
 };
 
 export const getSecondField = async () => {
   const { data } = await axios.get("secondcells");
-  return data;
+  return data[0].cells;
 };
 
-// const cell = {
-//   empty: true,
-//   filled: false,
-//   wounded: false,
-//   killed: false,
-//   checked: false,
-// };
+export const updateCellByIdInFild_2 = async (body) => {
+  const { data } = await axios.put(`secondcells/1`, { cells: body });
+  return data.cells;
+};
 
-// export const fieldArrayFirst = Array(100).fill(cell);
-// export const fieldArraySecond = Array(100).fill(cell);
+export const resetFild_2 = async (body) => {
+  const { data } = await axios.put("secondcells/1", body);
+  return data.cells;
+};

@@ -1,5 +1,6 @@
 import "./App.css";
 import Field from "./components/Field/Field";
+import ResetBtn from "./components/ResetBtn/ResetBtn";
 import useFetchData from "./customHooks/fetchData";
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         !isLoading &&
         Array.isArray(battleField_2) &&
         battleField_2.length > 0 && <Field list={battleField_2} />}
+      <ResetBtn />
     </>
   );
 }

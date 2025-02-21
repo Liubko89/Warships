@@ -1,5 +1,12 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { getFirstField, getSecondField } from "../../helpers/apiService";
+import {
+  getFirstField,
+  getSecondField,
+  resetFild_1,
+  resetFild_2,
+  updateCellByIdInFild_1,
+  updateCellByIdInFild_2,
+} from "../../helpers/apiService";
 
 export const getBattleField_1 = createAsyncThunk(
   "warships/battleField_1",
@@ -13,11 +20,23 @@ export const getBattleField_1 = createAsyncThunk(
   }
 );
 
-export const updateBattleField_1 = createAsyncThunk(
-  "warships/battleField_1",
-  async (id, thunkAPI) => {
+export const updateCellInBattleField_1 = createAsyncThunk(
+  "cell/battleField_1",
+  async (body, thunkAPI) => {
     try {
-      const response = await getFirstField();
+      const response = await updateCellByIdInFild_1(body);
+      return response;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);
+
+export const resetField_1 = createAsyncThunk(
+  "create/battleField_1",
+  async (body, thunkAPI) => {
+    try {
+      const response = await resetFild_1(body);
       return response;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
@@ -30,6 +49,30 @@ export const getBattleField_2 = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const response = await getSecondField();
+      return response;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);
+
+export const updateCellInBattleField_2 = createAsyncThunk(
+  "cell/battleField_2",
+  async (body, thunkAPI) => {
+    try {
+      const response = await updateCellByIdInFild_2(body);
+      return response;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);
+
+export const resetField_2 = createAsyncThunk(
+  "create/battleField_2",
+  async (body, thunkAPI) => {
+    try {
+      const response = await resetFild_2(body);
       return response;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
