@@ -12,13 +12,14 @@
 }
 
 .cellFilled {
-  background-color: rgb(19, 14, 62);
+  border: 1px solid rgb(140, 133, 133);
+  background-color: rgb(94, 92, 115);
 }
 
 .cellWounded {
   background-color: rgb(229, 147, 232);
 }
-.seeKilled {
+.cellKilled {
   background-color: rgb(196, 11, 33);
 }
 .cellChecked {

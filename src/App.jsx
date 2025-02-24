@@ -15,12 +15,16 @@ function App() {
       {!errorMessage &&
         !isLoading &&
         Array.isArray(battleField_1) &&
-        battleField_1.length > 0 && <Field list={battleField_1} />}
+        battleField_1.length > 0 && (
+          <Field list={battleField_1} battleField={1} />
+        )}
 
       {!errorMessage &&
         !isLoading &&
         Array.isArray(battleField_2) &&
-        battleField_2.length > 0 && <Field list={battleField_2} />}
+        battleField_2.length > 0 && (
+          <Field list={battleField_2} battleField={2} />
+        )}
       <ResetBtn />
     </>
   );
