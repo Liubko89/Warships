@@ -9,71 +9,20 @@ import {
   selectBattleField_1,
   selectBattleField_2,
 } from "../../redux/warships/selectors";
+import { fillBattleField } from "../../helpers/fillingTheCells";
 
 const Cell = ({ cell, battleField }) => {
   const dispatch = useDispatch();
   const battleField_1 = useSelector(selectBattleField_1);
   const battleField_2 = useSelector(selectBattleField_2);
 
-  const fillBattleField = (arr) =>
-    arr.map((e, i, a) => {
-      const isAllowedToFill = () => {
-        if (i < 1) {
-          return (
-            a[i + 1]["empty"] === false ||
-            a[i + 10]["empty"] === false ||
-            (a[i + 1]["empty"] && a[i + 10]["empty"])
-          );
-        } else if (i < 10) {
-          return (
-            a[i + 1]["empty"] === false ||
-            a[i + 10]["empty"] === false ||
-            a[i - 1]["empty"] === false ||
-            (a[i + 1]["empty"] && a[i + 10]["empty"] && a[i - 1]["empty"])
-          );
-        } else if (i >= 90) {
-          return (
-            a[i + 1]["empty"] === false ||
-            a[i - 1]["empty"] === false ||
-            a[i - 10]["empty"] === false ||
-            (a[i + 1]["empty"] && a[i - 1]["empty"] && a[i - 10]["empty"])
-          );
-        } else if (i === 99) {
-          return (
-            a[i - 1]["empty"] === false ||
-            a[i - 10]["empty"] === false ||
-            (a[i - 1]["empty"] && a[i - 10]["empty"])
-          );
-        }
-
-        return (
-          a[i + 1]["empty"] === false ||
-          a[i + 10]["empty"] === false ||
-          a[i - 1]["empty"] === false ||
-          a[i - 10]["empty"] === false ||
-          (a[i + 1]["empty"] &&
-            a[i + 9]["empty"] &&
-            a[i + 10]["empty"] &&
-            a[i + 11]["empty"] &&
-            a[i - 1]["empty"] &&
-            a[i - 9]["empty"] &&
-            a[i - 10]["empty"] &&
-            a[i - 11]["empty"])
-        );
-      };
-
-      return e.id === cell.id && isAllowedToFill()
-        ? { ...cell, empty: false }
-        : e;
-    });
-
   const updateBattleField_1 = () => {
     if (!battleField_1[cell.id - 1].empty) return;
-    dispatch(updateCellInBattleField_1(fillBattleField(battleField_1)));
+    dispatch(updateCellInBattleField_1(fillBattleField(battleField_1, cell)));
   };
   const updateBattleField_2 = () => {
     if (!battleField_2[cell.id - 1].empty) return;
-    dispatch(updateCellInBattleField_2(fillBattleField(battleField_2)));
+    dispatch(updateCellInBattleField_2(fillBattleField(battleField_2, cell)));
   };
 
   const handleClick = () => {
@@ -91,7 +40,7 @@ const Cell = ({ cell, battleField }) => {
         role="button"
         onClick={handleClick}
       >
-        {cell.id}
+        {cell.id - 1}
       </div>
     </li>
   );
