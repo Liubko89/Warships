@@ -27,6 +27,17 @@ const handleRejected = (state, action) => {
 const warshipsSlice = createSlice({
   name: "warships",
   initialState,
+  reducers: {
+    // fill battle field 1
+    fillBattleField_1: (state, { payload }) => {
+      state.battleField_1 = payload;
+    },
+
+    // fill battle field 2
+    fillBattleField_2: (state, { payload }) => {
+      state.battleField_2 = payload;
+    },
+  },
 
   extraReducers: (builder) => {
     builder
@@ -39,7 +50,7 @@ const warshipsSlice = createSlice({
       })
       .addCase(getBattleField_1.rejected, handleRejected)
 
-      // update a cell in battlefield 1
+      // update battlefield 1
       .addCase(updateBattleField_1.fulfilled, (state, { payload }) => {
         state.error = null;
         state.battleField_1 = payload;
@@ -65,7 +76,7 @@ const warshipsSlice = createSlice({
       })
       .addCase(getBattleField_2.rejected, handleRejected)
 
-      // update a cell in battlefield 2
+      // update battlefield 2
       .addCase(updateBattleField_2.fulfilled, (state, { payload }) => {
         state.error = null;
         state.battleField_2 = payload;
@@ -83,5 +94,7 @@ const warshipsSlice = createSlice({
       .addCase(resetField_2.rejected, handleRejected);
   },
 });
+
+export const { fillBattleField_1, fillBattleField_2 } = warshipsSlice.actions;
 
 export const warshipsReducer = warshipsSlice.reducer;
