@@ -8,7 +8,7 @@ export const getFirstField = async () => {
   return data[0].cells;
 };
 
-export const updateCellByIdInFild_1 = async (body) => {
+export const updateFild_1 = async (body) => {
   const { data } = await axios.put(`firstcells/1`, { cells: body });
   return data.cells;
 };
@@ -23,7 +23,7 @@ export const getSecondField = async () => {
   return data[0].cells;
 };
 
-export const updateCellByIdInFild_2 = async (body) => {
+export const updateFild_2 = async (body) => {
   const { data } = await axios.put(`secondcells/1`, { cells: body });
   return data.cells;
 };

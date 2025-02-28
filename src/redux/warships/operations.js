@@ -4,8 +4,8 @@ import {
   getSecondField,
   resetFild_1,
   resetFild_2,
-  updateCellByIdInFild_1,
-  updateCellByIdInFild_2,
+  updateFild_1,
+  updateFild_2,
 } from "../../helpers/apiService";
 
 export const getBattleField_1 = createAsyncThunk(
@@ -20,11 +20,11 @@ export const getBattleField_1 = createAsyncThunk(
   }
 );
 
-export const updateCellInBattleField_1 = createAsyncThunk(
+export const updateBattleField_1 = createAsyncThunk(
   "cell/battleField_1",
   async (body, thunkAPI) => {
     try {
-      const response = await updateCellByIdInFild_1(body);
+      const response = await updateFild_1(body);
       return response;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
@@ -56,11 +56,11 @@ export const getBattleField_2 = createAsyncThunk(
   }
 );
 
-export const updateCellInBattleField_2 = createAsyncThunk(
+export const updateBattleField_2 = createAsyncThunk(
   "cell/battleField_2",
   async (body, thunkAPI) => {
     try {
-      const response = await updateCellByIdInFild_2(body);
+      const response = await updateFild_2(body);
       return response;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);

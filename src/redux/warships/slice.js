@@ -4,8 +4,8 @@ import {
   getBattleField_2,
   resetField_1,
   resetField_2,
-  updateCellInBattleField_1,
-  updateCellInBattleField_2,
+  updateBattleField_1,
+  updateBattleField_2,
 } from "./operations";
 
 const initialState = {
@@ -40,11 +40,11 @@ const warshipsSlice = createSlice({
       .addCase(getBattleField_1.rejected, handleRejected)
 
       // update a cell in battlefield 1
-      .addCase(updateCellInBattleField_1.fulfilled, (state, { payload }) => {
+      .addCase(updateBattleField_1.fulfilled, (state, { payload }) => {
         state.error = null;
         state.battleField_1 = payload;
       })
-      .addCase(updateCellInBattleField_1.rejected, handleRejected)
+      .addCase(updateBattleField_1.rejected, handleRejected)
 
       // reset battlefield 1
       .addCase(resetField_1.pending, handlePending)
@@ -66,11 +66,11 @@ const warshipsSlice = createSlice({
       .addCase(getBattleField_2.rejected, handleRejected)
 
       // update a cell in battlefield 2
-      .addCase(updateCellInBattleField_2.fulfilled, (state, { payload }) => {
+      .addCase(updateBattleField_2.fulfilled, (state, { payload }) => {
         state.error = null;
         state.battleField_2 = payload;
       })
-      .addCase(updateCellInBattleField_2.rejected, handleRejected)
+      .addCase(updateBattleField_2.rejected, handleRejected)
 
       // reset battlefield 2
       .addCase(resetField_2.pending, handlePending)
