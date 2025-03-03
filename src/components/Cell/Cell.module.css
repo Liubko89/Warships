@@ -11,11 +11,6 @@
   }
 }
 
-.cellFilled {
-  border: 1px solid rgb(140, 133, 133);
-  background-color: rgb(94, 92, 115);
-}
-
 .cellWounded {
   background-color: rgb(229, 147, 232);
 }
@@ -24,4 +19,13 @@
 }
 .cellChecked {
   background-color: rgb(152, 152, 156);
+}
+.cellBlocked {
+  background-color: rgb(178, 241, 241);
+  pointer-events: none;
+}
+
+.cellFilled {
+  border: 1px solid rgb(140, 133, 133);
+  background-color: rgb(94, 92, 115);
 }

@@ -1,103 +1,103 @@
-const neighbourAllowsToFill = (a, i) => {
-  const isCellEmpty = (index) => a[index] && a[index]["empty"];
-  const isCellFilled = (index) => a[index] && !a[index]["empty"];
+// const neighbourAllowsToFill = (a, i) => {
+//   const isCellEmpty = (index) => a[index] && a[index]["empty"];
+//   const isCellFilled = (index) => a[index] && !a[index]["empty"];
 
-  if (i === 0) {
-    return (
-      isCellFilled(i + 1) ||
-      isCellFilled(i + 10) ||
-      isCellEmpty(i + 11) ||
-      (isCellEmpty(i + 1) &&
-        isCellEmpty(i + 9) &&
-        isCellEmpty(i + 10) &&
-        isCellEmpty(i + 11))
-    );
-  } else if (i === 9) {
-    return (
-      isCellFilled(i - 1) ||
-      isCellFilled(i + 10) ||
-      isCellEmpty(i - 11) ||
-      isCellFilled(i + 11) ||
-      (isCellEmpty(i - 1) &&
-        isCellEmpty(i + 9) &&
-        isCellEmpty(i + 10) &&
-        isCellEmpty(i + 11))
-    );
-  } else if (i !== 9 && i < 90 && i.toString().includes("9")) {
-    return (
-      (isCellFilled(i + 1) && isCellEmpty(i + 9) && isCellEmpty(i - 11)) ||
-      (isCellFilled(i + 10) && isCellEmpty(i - 9) && isCellEmpty(i - 11)) ||
-      (isCellFilled(i - 1) && isCellEmpty(i - 9) && isCellEmpty(i + 11)) ||
-      (isCellFilled(i - 10) && isCellEmpty(i + 9) && isCellEmpty(i + 11)) ||
-      (isCellEmpty(i + 1) &&
-        isCellEmpty(i + 9) &&
-        isCellEmpty(i + 10) &&
-        isCellEmpty(i - 1) &&
-        isCellEmpty(i - 10) &&
-        isCellEmpty(i - 11))
-    );
-  } else if (i !== 0 && i < 90 && i.toString().includes("0")) {
-    return (
-      (isCellFilled(i + 1) && isCellEmpty(i + 9) && isCellEmpty(i - 11)) ||
-      (isCellFilled(i + 10) && isCellEmpty(i - 9) && isCellEmpty(i - 11)) ||
-      (isCellFilled(i - 1) && isCellEmpty(i - 9) && isCellEmpty(i + 11)) ||
-      (isCellFilled(i - 10) && isCellEmpty(i + 9) && isCellEmpty(i + 11)) ||
-      (isCellEmpty(i + 1) &&
-        isCellEmpty(i - 9) &&
-        isCellEmpty(i + 10) &&
-        isCellEmpty(i - 1) &&
-        isCellEmpty(i - 10) &&
-        isCellEmpty(i + 11))
-    );
-  } else if (i <= 10) {
-    return (
-      (isCellFilled(i + 1) && isCellEmpty(i + 9)) ||
-      isCellFilled(i + 10) ||
-      (isCellFilled(i - 1) && isCellEmpty(i + 11)) ||
-      (isCellEmpty(i + 1) &&
-        isCellEmpty(i + 9) &&
-        isCellEmpty(i + 10) &&
-        isCellEmpty(i + 11) &&
-        isCellEmpty(i - 1))
-    );
-  } else if (i >= 89 && i < 99) {
-    return (
-      (isCellFilled(i + 1) && isCellEmpty(i - 11)) ||
-      (isCellFilled(i - 1) && isCellEmpty(i - 9)) ||
-      isCellFilled(i - 10) ||
-      (isCellEmpty(i + 1) &&
-        isCellEmpty(i - 1) &&
-        isCellEmpty(i - 9) &&
-        isCellEmpty(i - 10) &&
-        isCellEmpty(i - 11))
-    );
-  } else if (i === 99) {
-    return (
-      isCellFilled(i - 1) ||
-      isCellFilled(i - 10) ||
-      isCellEmpty(i - 11) ||
-      (isCellEmpty(i - 1) &&
-        isCellEmpty(i - 9) &&
-        isCellEmpty(i - 10) &&
-        isCellEmpty(i - 11))
-    );
-  }
+//   if (i === 0) {
+//     return (
+//       isCellFilled(i + 1) ||
+//       isCellFilled(i + 10) ||
+//       isCellEmpty(i + 11) ||
+//       (isCellEmpty(i + 1) &&
+//         isCellEmpty(i + 9) &&
+//         isCellEmpty(i + 10) &&
+//         isCellEmpty(i + 11))
+//     );
+//   } else if (i === 9) {
+//     return (
+//       isCellFilled(i - 1) ||
+//       isCellFilled(i + 10) ||
+//       isCellEmpty(i - 11) ||
+//       isCellFilled(i + 11) ||
+//       (isCellEmpty(i - 1) &&
+//         isCellEmpty(i + 9) &&
+//         isCellEmpty(i + 10) &&
+//         isCellEmpty(i + 11))
+//     );
+//   } else if (i !== 9 && i < 90 && i.toString().includes("9")) {
+//     return (
+//       (isCellFilled(i + 1) && isCellEmpty(i + 9) && isCellEmpty(i - 11)) ||
+//       (isCellFilled(i + 10) && isCellEmpty(i - 9) && isCellEmpty(i - 11)) ||
+//       (isCellFilled(i - 1) && isCellEmpty(i - 9) && isCellEmpty(i + 11)) ||
+//       (isCellFilled(i - 10) && isCellEmpty(i + 9) && isCellEmpty(i + 11)) ||
+//       (isCellEmpty(i + 1) &&
+//         isCellEmpty(i + 9) &&
+//         isCellEmpty(i + 10) &&
+//         isCellEmpty(i - 1) &&
+//         isCellEmpty(i - 10) &&
+//         isCellEmpty(i - 11))
+//     );
+//   } else if (i !== 0 && i < 90 && i.toString().includes("0")) {
+//     return (
+//       (isCellFilled(i + 1) && isCellEmpty(i + 9) && isCellEmpty(i - 11)) ||
+//       (isCellFilled(i + 10) && isCellEmpty(i - 9) && isCellEmpty(i - 11)) ||
+//       (isCellFilled(i - 1) && isCellEmpty(i - 9) && isCellEmpty(i + 11)) ||
+//       (isCellFilled(i - 10) && isCellEmpty(i + 9) && isCellEmpty(i + 11)) ||
+//       (isCellEmpty(i + 1) &&
+//         isCellEmpty(i - 9) &&
+//         isCellEmpty(i + 10) &&
+//         isCellEmpty(i - 1) &&
+//         isCellEmpty(i - 10) &&
+//         isCellEmpty(i + 11))
+//     );
+//   } else if (i <= 10) {
+//     return (
+//       (isCellFilled(i + 1) && isCellEmpty(i + 9)) ||
+//       isCellFilled(i + 10) ||
+//       (isCellFilled(i - 1) && isCellEmpty(i + 11)) ||
+//       (isCellEmpty(i + 1) &&
+//         isCellEmpty(i + 9) &&
+//         isCellEmpty(i + 10) &&
+//         isCellEmpty(i + 11) &&
+//         isCellEmpty(i - 1))
+//     );
+//   } else if (i >= 89 && i < 99) {
+//     return (
+//       (isCellFilled(i + 1) && isCellEmpty(i - 11)) ||
+//       (isCellFilled(i - 1) && isCellEmpty(i - 9)) ||
+//       isCellFilled(i - 10) ||
+//       (isCellEmpty(i + 1) &&
+//         isCellEmpty(i - 1) &&
+//         isCellEmpty(i - 9) &&
+//         isCellEmpty(i - 10) &&
+//         isCellEmpty(i - 11))
+//     );
+//   } else if (i === 99) {
+//     return (
+//       isCellFilled(i - 1) ||
+//       isCellFilled(i - 10) ||
+//       isCellEmpty(i - 11) ||
+//       (isCellEmpty(i - 1) &&
+//         isCellEmpty(i - 9) &&
+//         isCellEmpty(i - 10) &&
+//         isCellEmpty(i - 11))
+//     );
+//   }
 
-  return (
-    (isCellFilled(i + 1) && isCellEmpty(i + 9) && isCellEmpty(i - 11)) ||
-    (isCellFilled(i + 10) && isCellEmpty(i - 9) && isCellEmpty(i - 11)) ||
-    (isCellFilled(i - 1) && isCellEmpty(i - 9) && isCellEmpty(i + 11)) ||
-    (isCellFilled(i - 10) && isCellEmpty(i + 9) && isCellEmpty(i + 11)) ||
-    (isCellEmpty(i + 1) &&
-      isCellEmpty(i + 9) &&
-      isCellEmpty(i + 10) &&
-      isCellEmpty(i + 11) &&
-      isCellEmpty(i - 1) &&
-      isCellEmpty(i - 9) &&
-      isCellEmpty(i - 10) &&
-      isCellEmpty(i - 11))
-  );
-};
+//   return (
+//     (isCellFilled(i + 1) && isCellEmpty(i + 9) && isCellEmpty(i - 11)) ||
+//     (isCellFilled(i + 10) && isCellEmpty(i - 9) && isCellEmpty(i - 11)) ||
+//     (isCellFilled(i - 1) && isCellEmpty(i - 9) && isCellEmpty(i + 11)) ||
+//     (isCellFilled(i - 10) && isCellEmpty(i + 9) && isCellEmpty(i + 11)) ||
+//     (isCellEmpty(i + 1) &&
+//       isCellEmpty(i + 9) &&
+//       isCellEmpty(i + 10) &&
+//       isCellEmpty(i + 11) &&
+//       isCellEmpty(i - 1) &&
+//       isCellEmpty(i - 9) &&
+//       isCellEmpty(i - 10) &&
+//       isCellEmpty(i - 11))
+//   );
+// };
 
 const isAllowedToFill = (a, i) => {
   const filledCells = a.filter((e) => !e.empty);
@@ -133,18 +133,26 @@ const isAllowedToFill = (a, i) => {
     return true;
   } else if (filledCells.length === 7) {
     return !someNeighbourIsFilled();
+  } else if (filledCells.length < 10 && !someNeighbourIsFilled()) {
+    return false;
   } else if (filledCells.length < 10) {
     return true;
   } else if (filledCells.length === 10) {
     return !someNeighbourIsFilled();
+  } else if (filledCells.length < 12 && !someNeighbourIsFilled()) {
+    return false;
   } else if (filledCells.length < 12) {
     return true;
   } else if (filledCells.length === 12) {
     return !someNeighbourIsFilled();
+  } else if (filledCells.length < 14 && !someNeighbourIsFilled()) {
+    return false;
   } else if (filledCells.length < 14) {
     return true;
   } else if (filledCells.length === 14) {
     return !someNeighbourIsFilled();
+  } else if (filledCells.length < 16 && !someNeighbourIsFilled()) {
+    return false;
   } else if (filledCells.length < 16) {
     return true;
   } else if (filledCells.length === 16) {
@@ -167,7 +175,8 @@ const isAllowedToFill = (a, i) => {
 export const fillBattleField = (arr, cell) =>
   arr.map((e, i, a) => {
     return e.id === cell.id &&
-      neighbourAllowsToFill(a, i) &&
+      // neighbourAllowsToFill(a, i)
+      // &&
       isAllowedToFill(a, i)
       ? { ...cell, empty: false }
       : e;
