@@ -13,6 +13,7 @@ const initialState = {
   battleField_2: [],
   isLoading: false,
   error: null,
+  player: "",
 };
 
 const handlePending = (state) => {
@@ -36,6 +37,11 @@ const warshipsSlice = createSlice({
     // fill battle field 2
     fillBattleField_2: (state, { payload }) => {
       state.battleField_2 = payload;
+    },
+
+    // choose player
+    choosePlayer: (state, { payload }) => {
+      state.player = payload;
     },
   },
 
@@ -95,6 +101,7 @@ const warshipsSlice = createSlice({
   },
 });
 
-export const { fillBattleField_1, fillBattleField_2 } = warshipsSlice.actions;
+export const { fillBattleField_1, fillBattleField_2, choosePlayer } =
+  warshipsSlice.actions;
 
 export const warshipsReducer = warshipsSlice.reducer;

@@ -4,10 +4,15 @@ import ResetBtn from "./components/ResetBtn/ResetBtn";
 import SaveBtn from "./components/SaveBtn/SaveBtn";
 import useFetchData from "./customHooks/fetchData";
 import useBlockCells from "./customHooks/blockCells";
+import { useSelector } from "react-redux";
+import { selectPlayer } from "./redux/warships/selectors";
+import PlayerChoice from "./components/PlayerChoice/PlayerChoice";
 
 function App() {
   const { battleField_1, battleField_2, isLoading, errorMessage } =
     useFetchData();
+
+  const player = useSelector(selectPlayer);
 
   const {
     blockedCellsBF_1,
@@ -18,6 +23,8 @@ function App() {
 
   return (
     <>
+      {player === "" && <PlayerChoice />}
+
       {isLoading && <div>Loading...</div>}
       {errorMessage && <div>{errorMessage}</div>}
 
@@ -52,7 +59,7 @@ function App() {
             <SaveBtn battleField={2} />
             <ResetBtn
               battleField={2}
-              resetBlockedCells={resetBlockedCellsBF_1}
+              resetBlockedCells={resetBlockedCellsBF_2}
             />
           </>
         )}

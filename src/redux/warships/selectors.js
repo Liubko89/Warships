@@ -3,3 +3,5 @@ export const selectBattleField_2 = (state) => state.warships.battleField_2;
 
 export const selectIsLoading = (state) => state.warships.isLoading;
 export const selectError = (state) => state.warships.error;
+
+export const selectPlayer = (state) => state.warships.player;
