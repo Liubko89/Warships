@@ -5,3 +5,7 @@ export const selectIsLoading = (state) => state.warships.isLoading;
 export const selectError = (state) => state.warships.error;
 
 export const selectPlayer = (state) => state.warships.player;
+export const selectFirstPlayerIsReady = (state) =>
+  state.warships.firstPlayerIsReadyToPlay;
+export const selectSecondPlayerIsReady = (state) =>
+  state.warships.secondPlayerIsReadyToPlay;

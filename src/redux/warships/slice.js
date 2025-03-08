@@ -14,6 +14,8 @@ const initialState = {
   isLoading: false,
   error: null,
   player: "",
+  firstPlayerIsReadyToPlay: false,
+  secondPlayerIsReadyToPlay: false,
 };
 
 const handlePending = (state) => {
@@ -52,14 +54,16 @@ const warshipsSlice = createSlice({
       .addCase(getBattleField_1.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        state.battleField_1 = action.payload;
+        state.battleField_1 = action.payload.cells;
+        state.firstPlayerIsReadyToPlay = action.payload.isReadyToPlay;
       })
       .addCase(getBattleField_1.rejected, handleRejected)
 
       // update battlefield 1
       .addCase(updateBattleField_1.fulfilled, (state, { payload }) => {
         state.error = null;
-        state.battleField_1 = payload;
+        state.battleField_1 = payload.cells;
+        state.firstPlayerIsReadyToPlay = payload.isReadyToPlay;
       })
       .addCase(updateBattleField_1.rejected, handleRejected)
 
@@ -78,14 +82,16 @@ const warshipsSlice = createSlice({
       .addCase(getBattleField_2.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        state.battleField_2 = action.payload;
+        state.battleField_2 = action.payload.cells;
+        state.secondPlayerIsReadyToPlay = action.payload.isReadyToPlay;
       })
       .addCase(getBattleField_2.rejected, handleRejected)
 
       // update battlefield 2
       .addCase(updateBattleField_2.fulfilled, (state, { payload }) => {
         state.error = null;
-        state.battleField_2 = payload;
+        state.battleField_2 = payload.cells;
+        state.secondPlayerIsReadyToPlay = payload.isReadyToPlay;
       })
       .addCase(updateBattleField_2.rejected, handleRejected)
 

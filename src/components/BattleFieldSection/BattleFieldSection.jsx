@@ -3,12 +3,12 @@ import ResetBtn from "../ResetBtn/ResetBtn";
 import SaveBtn from "../SaveBtn/SaveBtn";
 import css from "./BattleFieldSection.module.css";
 
-const BattleFieldSection = (
+const BattleFieldSection = ({
   list,
   battleFieldNumber,
   blockedCells,
-  resetBlockedCellsBF
-) => {
+  resetBlockedCellsBF,
+}) => {
   return (
     <div>
       <Field
