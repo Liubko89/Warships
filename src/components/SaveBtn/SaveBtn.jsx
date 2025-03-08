@@ -9,7 +9,7 @@ import {
   selectBattleField_2,
 } from "../../redux/warships/selectors";
 
-const SaveBtn = ({ battleFieldNumber }) => {
+const SaveBtn = ({ battleFieldNumber, closeModal }) => {
   const dispatch = useDispatch();
   const field1 = useSelector(selectBattleField_1);
   const field2 = useSelector(selectBattleField_2);
@@ -18,11 +18,13 @@ const SaveBtn = ({ battleFieldNumber }) => {
     battleFieldNumber === 1
       ? dispatch(updateBattleField_1(field1))
       : dispatch(updateBattleField_2(field2));
+
+    closeModal();
   };
 
   return (
     <button className={css.btn} onClick={handleCklick}>
-      Save
+      Start
     </button>
   );
 };

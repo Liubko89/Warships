@@ -9,6 +9,7 @@ import {
   selectSecondPlayerIsReady,
 } from "./redux/warships/selectors";
 import BattleFieldSection from "./components/BattleFieldSection/BattleFieldSection";
+import FinishTheGameButton from "./components/FinishTheGameButton/FinishTheGameButton";
 
 function App() {
   const { battleField_1, battleField_2, isLoading, errorMessage } =
@@ -27,8 +28,11 @@ function App() {
 
   return (
     <>
+      <FinishTheGameButton
+        resetBlockedCellsBF_1={resetBlockedCellsBF_1}
+        resetBlockedCellsBF_2={resetBlockedCellsBF_2}
+      />
       {player === "" && <PlayerChoice />}
-
       {isLoading && <div>Loading...</div>}
       {errorMessage && <div>{errorMessage}</div>}
 
@@ -42,6 +46,7 @@ function App() {
             battleFieldNumber={1}
             blockedCells={blockedCellsBF_1}
             resetBlockedCellsBF={resetBlockedCellsBF_1}
+            player={player}
           />
         )}
 
@@ -55,6 +60,7 @@ function App() {
             battleFieldNumber={2}
             blockedCells={blockedCellsBF_2}
             resetBlockedCellsBF={resetBlockedCellsBF_2}
+            player={player}
           />
         )}
     </>

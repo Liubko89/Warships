@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Field from "../Field/Field";
 import ResetBtn from "../ResetBtn/ResetBtn";
 import SaveBtn from "../SaveBtn/SaveBtn";
@@ -8,21 +9,41 @@ const BattleFieldSection = ({
   battleFieldNumber,
   blockedCells,
   resetBlockedCellsBF,
+  player,
 }) => {
+  const [isClosed, setIsClosed] = useState(false);
+  const closeModal = () => {
+    setIsClosed(true);
+  };
   return (
-    <div>
+    <div className={css.fieldWrapper}>
       <Field
         list={list}
         battleFieldNumber={battleFieldNumber}
         blockedCells={blockedCells}
       />
-      {list.filter((e) => !e.empty).length === 20 && (
-        <SaveBtn battleFieldNumber={battleFieldNumber} />
+      {battleFieldNumber.toString() === player && (
+        <>
+          {list.filter((e) => !e.empty).length === 20 && !isClosed && (
+            <div className={css.saveWrapper}>
+              <SaveBtn
+                battleFieldNumber={battleFieldNumber}
+                closeModal={closeModal}
+              />
+              <ResetBtn
+                battleFieldNumber={battleFieldNumber}
+                resetBlockedCells={resetBlockedCellsBF}
+              />
+            </div>
+          )}
+          {list.filter((e) => !e.empty).length < 20 && (
+            <ResetBtn
+              battleFieldNumber={battleFieldNumber}
+              resetBlockedCells={resetBlockedCellsBF}
+            />
+          )}
+        </>
       )}
-      <ResetBtn
-        battleFieldNumber={battleFieldNumber}
-        resetBlockedCells={resetBlockedCellsBF}
-      />
     </div>
   );
 };

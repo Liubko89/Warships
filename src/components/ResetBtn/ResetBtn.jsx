@@ -6,7 +6,7 @@ import { defaultArr } from "../../helpers/defaultBattleFields";
 const ResetBtn = ({ battleFieldNumber, resetBlockedCells }) => {
   const dispatch = useDispatch();
 
-  const handleCklick = () => {
+  const handleClick = () => {
     resetBlockedCells();
     battleFieldNumber === 1
       ? dispatch(resetField_1(defaultArr))
@@ -14,7 +14,7 @@ const ResetBtn = ({ battleFieldNumber, resetBlockedCells }) => {
   };
 
   return (
-    <button className={css.btn} onClick={handleCklick}>
+    <button className={css.btn} onClick={handleClick}>
       Reset
     </button>
   );
