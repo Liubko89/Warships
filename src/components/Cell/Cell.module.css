@@ -1,6 +1,6 @@
 .cell {
-  width: 32px;
-  height: 32px;
+  min-width: 32px;
+  aspect-ratio: 1 / 1;
   background-color: aqua;
   border: 1px solid black;
   border-radius: 2px;
@@ -11,21 +11,58 @@
   }
 }
 
-.cellWounded {
-  background-color: rgb(229, 147, 232);
-}
-.cellKilled {
-  background-color: rgb(196, 11, 33);
-}
-.cellChecked {
-  background-color: rgb(152, 152, 156);
-}
 .cellBlocked {
-  background-color: rgb(178, 241, 241);
+  background-color: rgb(112, 255, 126);
   pointer-events: none;
 }
 
 .cellFilled {
-  border: 1px solid rgb(140, 133, 133);
   background-color: rgb(94, 92, 115);
+}
+
+.enemyCell {
+  pointer-events: all;
+  background-color: rgb(216, 243, 248);
+}
+
+.cellChecked {
+  background-color: rgb(121, 121, 150);
+  position: relative;
+
+  &::before {
+    content: "";
+    width: 25%;
+    height: 25%;
+    border-radius: 50%;
+    background-color: black;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+  }
+}
+
+.cellWounded {
+  background-color: rgb(246, 18, 18);
+  position: relative;
+
+  &::before,
+  &::after {
+    content: "";
+    width: 2px;
+    height: 35px;
+    background-color: black;
+    position: absolute;
+    border-radius: 4px;
+  }
+
+  &::before {
+    rotate: 45deg;
+  }
+  &::after {
+    rotate: -45deg;
+    right: 50%;
+    top: 50%;
+    translate: 50% -50%;
+  }
 }

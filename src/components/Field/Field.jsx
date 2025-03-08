@@ -4,18 +4,21 @@ import css from "./Field.module.css";
 
 const Field = ({ list, battleField, blockedCells }) => {
   return (
-    <ul className={css.list}>
-      {list.map((cell) => {
-        return (
-          <Cell
-            key={nanoid()}
-            cell={cell}
-            battleField={battleField}
-            blockedCells={blockedCells}
-          />
-        );
-      })}
-    </ul>
+    <div className={css.wrapper}>
+      <h1 className={css.title}>Player N{battleField}</h1>
+      <ul className={css.list}>
+        {list.map((cell) => {
+          return (
+            <Cell
+              key={nanoid()}
+              cell={cell}
+              battleField={battleField}
+              blockedCells={blockedCells}
+            />
+          );
+        })}
+      </ul>
+    </div>
   );
 };
 

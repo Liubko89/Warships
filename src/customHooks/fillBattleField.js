@@ -20,11 +20,11 @@ const useFillBattleField = (battleField, cell) => {
     dispatch(fillBattleField_2(fillBattleField(battleField_2, cell)));
   };
 
-  const handleClick = () => {
+  const handleFilling = () => {
     battleField === 1 ? fillField_1() : fillField_2();
   };
 
-  return { handleClick };
+  return { handleFilling };
 };
 
 export default useFillBattleField;

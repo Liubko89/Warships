@@ -13,11 +13,10 @@ import {
 
 const useFetchData = () => {
   const dispatch = useDispatch();
-
-  const isLoading = useSelector(selectIsLoading);
-  const errorMessage = useSelector(selectError);
   const battleField_1 = useSelector(selectBattleField_1);
   const battleField_2 = useSelector(selectBattleField_2);
+  const isLoading = useSelector(selectIsLoading);
+  const errorMessage = useSelector(selectError);
 
   useEffect(() => {
     dispatch(getBattleField_1());

@@ -9,13 +9,13 @@ import {
   selectBattleField_2,
 } from "../../redux/warships/selectors";
 
-const SaveBtn = ({ battleField }) => {
+const SaveBtn = ({ battleFieldNumber }) => {
   const dispatch = useDispatch();
   const field1 = useSelector(selectBattleField_1);
   const field2 = useSelector(selectBattleField_2);
 
   const handleCklick = () => {
-    battleField === 1
+    battleFieldNumber === 1
       ? dispatch(updateBattleField_1(field1))
       : dispatch(updateBattleField_2(field2));
   };

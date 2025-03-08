@@ -3,12 +3,16 @@ import css from "./Cell.module.css";
 import useFillBattleField from "../../customHooks/fillBattleField";
 import { useSelector } from "react-redux";
 import { selectPlayer } from "../../redux/warships/selectors";
+import useCheckCells from "../../customHooks/checkCells";
 
 const Cell = ({ cell, battleField, blockedCells }) => {
-  const { handleClick } = useFillBattleField(battleField, cell);
+  const { handleFilling } = useFillBattleField(battleField, cell);
+  const player = useSelector(selectPlayer);
+
+  const { handleCheckBF_1, handleCheckBF_2 } = useCheckCells(cell);
+
   const isCellBlocked =
     blockedCells.length !== 0 ? blockedCells.includes(cell.id) : false;
-  const player = useSelector(selectPlayer);
 
   return (
     <li>
@@ -17,13 +21,19 @@ const Cell = ({ cell, battleField, blockedCells }) => {
           css.cell,
           !cell.empty && css.cellFilled,
           cell.checked && css.cellChecked,
-          isCellBlocked || (player === "" && css.cellBlocked)
+          cell.wounded && css.cellWounded,
+          (isCellBlocked || player === "") && css.cellBlocked,
+          player === "1" && battleField === 2 && css.enemyCell,
+          player === "2" && battleField === 1 && css.enemyCell
         )}
         role="button"
-        onClick={handleClick}
-      >
-        {cell.id - 1}
-      </div>
+        onClick={
+          (player === "1" && battleField === 2 && handleCheckBF_2) ||
+          (player === "2" && battleField === 1 && handleCheckBF_1) ||
+          handleFilling
+        }
+        aria-label="a cell"
+      ></div>
     </li>
   );
 };
