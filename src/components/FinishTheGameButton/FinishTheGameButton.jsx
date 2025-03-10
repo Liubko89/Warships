@@ -2,6 +2,7 @@ import css from "./FinishTheGameButton.module.css";
 import { useDispatch } from "react-redux";
 import { defaultArr } from "../../helpers/defaultBattleFields";
 import { resetField_1, resetField_2 } from "../../redux/warships/operations";
+import { choosePlayer } from "../../redux/warships/slice";
 
 const FinishTheGameButton = ({
   resetBlockedCellsBF_1,
@@ -10,6 +11,7 @@ const FinishTheGameButton = ({
   const dispatch = useDispatch();
 
   const handleClick = () => {
+    dispatch(choosePlayer(""));
     resetBlockedCellsBF_1();
     resetBlockedCellsBF_2();
     dispatch(resetField_1(defaultArr));
