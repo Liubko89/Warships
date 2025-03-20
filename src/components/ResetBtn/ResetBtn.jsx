@@ -1,5 +1,4 @@
 import { useDispatch } from "react-redux";
-import css from "./ResetBtn.module.css";
 import { resetField_1, resetField_2 } from "../../redux/warships/operations";
 import { defaultArr } from "../../helpers/defaultBattleFields";
 
@@ -14,7 +13,7 @@ const ResetBtn = ({ battleFieldNumber, resetBlockedCells }) => {
   };
 
   return (
-    <button className={css.btn} onClick={handleClick}>
+    <button className="btn" onClick={handleClick}>
       Reset
     </button>
   );

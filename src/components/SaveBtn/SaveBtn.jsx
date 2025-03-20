@@ -1,5 +1,4 @@
 import { useDispatch, useSelector } from "react-redux";
-import css from "./SaveBtn.module.css";
 import {
   updateBattleField_1,
   updateBattleField_2,
@@ -23,7 +22,7 @@ const SaveBtn = ({ battleFieldNumber, closeModal }) => {
   };
 
   return (
-    <button className={css.btn} onClick={handleCklick}>
+    <button className="btn" onClick={handleCklick}>
       Start
     </button>
   );

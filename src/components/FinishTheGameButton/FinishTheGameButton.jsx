@@ -1,4 +1,3 @@
-import css from "./FinishTheGameButton.module.css";
 import { useDispatch } from "react-redux";
 import { defaultArr } from "../../helpers/defaultBattleFields";
 import { resetField_1, resetField_2 } from "../../redux/warships/operations";
@@ -19,7 +18,12 @@ const FinishTheGameButton = ({
   };
 
   return (
-    <button className="btn" type="button" onClick={handleClick}>
+    <button
+      className="btn"
+      style={{ margin: "18px auto", backgroundColor: "red" }}
+      type="button"
+      onClick={handleClick}
+    >
       Finish the Game
     </button>
   );

@@ -74,6 +74,7 @@ const warshipsSlice = createSlice({
         state.error = null;
 
         state.battleField_1 = payload;
+        state.firstPlayerIsReadyToPlay = false;
       })
       .addCase(resetField_1.rejected, handleRejected)
 
@@ -102,6 +103,7 @@ const warshipsSlice = createSlice({
         state.error = null;
 
         state.battleField_2 = payload;
+        state.secondPlayerIsReadyToPlay = false;
       })
       .addCase(resetField_2.rejected, handleRejected);
   },
