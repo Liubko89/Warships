@@ -60,6 +60,7 @@ const warshipsSlice = createSlice({
         state.error = null;
         state.battleField_1 = action.payload.cells;
         state.firstPlayerIsReadyToPlay = action.payload.isReadyToPlay;
+        state.firstPlayerEngaged = action.payload.engaged;
       })
       .addCase(getBattleField_1.rejected, handleRejected)
 
@@ -90,6 +91,7 @@ const warshipsSlice = createSlice({
 
         state.battleField_1 = payload;
         state.firstPlayerIsReadyToPlay = false;
+        state.firstPlayerEngaged = false;
       })
       .addCase(resetField_1.rejected, handleRejected)
 
@@ -100,6 +102,7 @@ const warshipsSlice = createSlice({
         state.error = null;
         state.battleField_2 = action.payload.cells;
         state.secondPlayerIsReadyToPlay = action.payload.isReadyToPlay;
+        state.secondPlayerEngaged = action.payload.engaged;
       })
       .addCase(getBattleField_2.rejected, handleRejected)
 
@@ -128,6 +131,7 @@ const warshipsSlice = createSlice({
 
         state.battleField_2 = payload;
         state.secondPlayerIsReadyToPlay = false;
+        state.secondPlayerEngaged = false;
       })
       .addCase(resetField_2.rejected, handleRejected);
   },

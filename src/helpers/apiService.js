@@ -61,6 +61,6 @@ export const resetFild_2 = async (body) => {
 };
 
 export const engagePlayer_2 = async (body) => {
-  const { data } = await axios.put("firstcells/2", body);
+  const { data } = await axios.put("secondcells/1", body);
   return data;
 };

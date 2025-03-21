@@ -22,7 +22,7 @@ const SaveBtn = ({ battleFieldNumber, closeModal }) => {
   };
 
   return (
-    <button className="btn" onClick={handleCklick}>
+    <button className="btn" onClick={handleCklick} style={{ margin: "0" }}>
       Start
     </button>
   );

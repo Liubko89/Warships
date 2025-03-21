@@ -13,7 +13,7 @@ const ResetBtn = ({ battleFieldNumber, resetBlockedCells }) => {
   };
 
   return (
-    <button className="btn" onClick={handleClick}>
+    <button className="btn" onClick={handleClick} style={{ margin: "0" }}>
       Reset
     </button>
   );
