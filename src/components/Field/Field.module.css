@@ -9,9 +9,9 @@
   }
 
   .list {
+    padding: 0 16px;
     list-style: none;
     border: 1px solid #ccc;
-    width: max-content;
     margin: 0 auto;
 
     display: grid;
