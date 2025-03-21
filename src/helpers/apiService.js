@@ -29,6 +29,11 @@ export const resetFild_1 = async (body) => {
   return data.cells;
 };
 
+export const engagePlayer_1 = async (body) => {
+  const { data } = await axios.put("firstcells/1", body);
+  return data;
+};
+
 export const getSecondField = async () => {
   const { data } = await axios.get("secondcells");
   return data[0];
@@ -53,4 +58,9 @@ export const updateFild_2 = async (body) => {
 export const resetFild_2 = async (body) => {
   const { data } = await axios.put("secondcells/1", body);
   return data.cells;
+};
+
+export const engagePlayer_2 = async (body) => {
+  const { data } = await axios.put("firstcells/2", body);
+  return data;
 };

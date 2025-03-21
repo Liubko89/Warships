@@ -9,3 +9,8 @@ export const selectFirstPlayerIsReady = (state) =>
   state.warships.firstPlayerIsReadyToPlay;
 export const selectSecondPlayerIsReady = (state) =>
   state.warships.secondPlayerIsReadyToPlay;
+
+export const selectEngagedFirstPlayer = (state) =>
+  state.warships.firstPlayerEngaged;
+export const selectEngagedSecondPlayer = (state) =>
+  state.warships.secondPlayerEngaged;

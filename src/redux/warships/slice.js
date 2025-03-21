@@ -1,5 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
+  engageFirstPlayer,
+  engageSecondPlayer,
   getBattleField_1,
   getBattleField_2,
   resetField_1,
@@ -16,6 +18,8 @@ const initialState = {
   player: "",
   firstPlayerIsReadyToPlay: false,
   secondPlayerIsReadyToPlay: false,
+  firstPlayerEngaged: false,
+  secondPlayerEngaged: false,
 };
 
 const handlePending = (state) => {
@@ -61,11 +65,22 @@ const warshipsSlice = createSlice({
 
       // update battlefield 1
       .addCase(updateBattleField_1.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
         state.error = null;
         state.battleField_1 = payload.cells;
         state.firstPlayerIsReadyToPlay = payload.isReadyToPlay;
       })
       .addCase(updateBattleField_1.rejected, handleRejected)
+
+      // engage player 1
+      .addCase(engageFirstPlayer.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = null;
+        console.log(payload);
+
+        state.firstPlayerEngaged = payload.engaged;
+      })
+      .addCase(engageFirstPlayer.rejected, handleRejected)
 
       // reset battlefield 1
       .addCase(resetField_1.pending, handlePending)
@@ -90,11 +105,20 @@ const warshipsSlice = createSlice({
 
       // update battlefield 2
       .addCase(updateBattleField_2.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
         state.error = null;
         state.battleField_2 = payload.cells;
         state.secondPlayerIsReadyToPlay = payload.isReadyToPlay;
       })
       .addCase(updateBattleField_2.rejected, handleRejected)
+
+      // engage player 2
+      .addCase(engageSecondPlayer.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = null;
+        state.secondPlayerEngaged = payload.engaged;
+      })
+      .addCase(engageSecondPlayer.rejected, handleRejected)
 
       // reset battlefield 2
       .addCase(resetField_2.pending, handlePending)

@@ -1,5 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import {
+  engagePlayer_1,
+  engagePlayer_2,
   getFirstField,
   getSecondField,
   resetFild_1,
@@ -25,6 +27,18 @@ export const updateBattleField_1 = createAsyncThunk(
   async (body, thunkAPI) => {
     try {
       const response = await updateFild_1(body);
+      return response;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);
+
+export const engageFirstPlayer = createAsyncThunk(
+  "update/firstPlayerStatus",
+  async (body, thunkAPI) => {
+    try {
+      const response = await engagePlayer_1(body);
       return response;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
@@ -73,6 +87,18 @@ export const resetField_2 = createAsyncThunk(
   async (body, thunkAPI) => {
     try {
       const response = await resetFild_2(body);
+      return response;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);
+
+export const engageSecondPlayer = createAsyncThunk(
+  "update/secondPlayerStatus",
+  async (body, thunkAPI) => {
+    try {
+      const response = await engagePlayer_2(body);
       return response;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
