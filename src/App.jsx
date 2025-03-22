@@ -1,7 +1,7 @@
 import "./App.css";
 import useFetchData from "./customHooks/fetchData";
 import useBlockCells from "./customHooks/blockCells";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import PlayerChoice from "./components/PlayerChoice/PlayerChoice";
 import {
   selectFirstPlayerIsReady,
@@ -10,14 +10,19 @@ import {
 } from "./redux/warships/selectors";
 import BattleFieldSection from "./components/BattleFieldSection/BattleFieldSection";
 import FinishTheGameButton from "./components/FinishTheGameButton/FinishTheGameButton";
+import { BarLoader, BounceLoader } from "react-spinners";
 
 function App() {
   const { battleField_1, battleField_2, isLoading, errorMessage } =
     useFetchData();
-
   const player = useSelector(selectPlayer);
   const firstPlayerIsReady = useSelector(selectFirstPlayerIsReady);
   const secondPlayerIsReady = useSelector(selectSecondPlayerIsReady);
+  const override = {
+    display: "block",
+    margin: "0 auto",
+    borderColor: "red",
+  };
 
   const {
     blockedCellsBF_1,
@@ -27,17 +32,16 @@ function App() {
   } = useBlockCells();
 
   return (
-    <>
-      <FinishTheGameButton
-        resetBlockedCellsBF_1={resetBlockedCellsBF_1}
-        resetBlockedCellsBF_2={resetBlockedCellsBF_2}
-      />
+    <div className="battleZone">
       {player === "" && <PlayerChoice />}
-      {isLoading && <div>Loading...</div>}
+      {isLoading && (
+        <div className="loader">
+          <BarLoader width={320} />
+        </div>
+      )}
       {errorMessage && <div>{errorMessage}</div>}
-
       {!errorMessage &&
-        !isLoading &&
+        // !isLoading &&
         Array.isArray(battleField_1) &&
         battleField_1.length > 0 &&
         (player === "1" || (player === "2" && firstPlayerIsReady)) && (
@@ -49,9 +53,21 @@ function App() {
             player={player}
           />
         )}
-
+      {!errorMessage && !isLoading && player === "2" && !firstPlayerIsReady && (
+        <div style={{ alignContent: "center" }}>
+          <p style={{ textAlign: "center" }}>waiting for a player</p>
+          <BounceLoader
+            color={"green"}
+            loading={true}
+            cssOverride={override}
+            size={120}
+            aria-label="Loading Spinner"
+            data-testid="loader"
+          />
+        </div>
+      )}
       {!errorMessage &&
-        !isLoading &&
+        // !isLoading &&
         Array.isArray(battleField_2) &&
         battleField_2.length > 0 &&
         (player === "2" || (player === "1" && secondPlayerIsReady)) && (
@@ -63,7 +79,29 @@ function App() {
             player={player}
           />
         )}
-    </>
+      {!errorMessage &&
+        !isLoading &&
+        player === "1" &&
+        !secondPlayerIsReady && (
+          <div style={{ alignContent: "center", width: "100%" }}>
+            <p style={{ textAlign: "center" }}>waiting for a player</p>
+            <BounceLoader
+              color={"green"}
+              loading={true}
+              cssOverride={override}
+              size={120}
+              aria-label="Loading Spinner"
+              data-testid="loader"
+            />
+          </div>
+        )}
+      {firstPlayerIsReady && secondPlayerIsReady && (
+        <FinishTheGameButton
+          resetBlockedCellsBF_1={resetBlockedCellsBF_1}
+          resetBlockedCellsBF_2={resetBlockedCellsBF_2}
+        />
+      )}
+    </div>
   );
 }
 

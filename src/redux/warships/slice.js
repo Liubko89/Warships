@@ -77,8 +77,6 @@ const warshipsSlice = createSlice({
       .addCase(engageFirstPlayer.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.error = null;
-        console.log(payload);
-
         state.firstPlayerEngaged = payload.engaged;
       })
       .addCase(engageFirstPlayer.rejected, handleRejected)

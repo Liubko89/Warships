@@ -7,13 +7,13 @@
   cursor: pointer;
 
   &:hover {
-    background-color: blue;
+    background-color: rgb(36, 36, 216);
   }
 }
 
 @media screen and (min-width: 768px) {
   .cell {
-    min-width: 60px;
+    min-width: 40px;
   }
 }
 
@@ -28,7 +28,7 @@
 
 .enemyCell {
   pointer-events: all;
-  background: rgb(76, 222, 247);
+  background: rgb(225, 221, 144);
 }
 
 .cellChecked {
