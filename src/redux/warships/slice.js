@@ -54,7 +54,6 @@ const warshipsSlice = createSlice({
   extraReducers: (builder) => {
     builder
       // get battlefield 1
-      .addCase(getBattleField_1.pending, handlePending)
       .addCase(getBattleField_1.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
@@ -94,7 +93,6 @@ const warshipsSlice = createSlice({
       .addCase(resetField_1.rejected, handleRejected)
 
       // get battlefield 2
-      .addCase(getBattleField_2.pending, handlePending)
       .addCase(getBattleField_2.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;

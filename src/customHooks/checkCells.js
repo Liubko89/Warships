@@ -4,6 +4,8 @@ import {
   selectBattleField_2,
 } from "../redux/warships/selectors";
 import {
+  getBattleField_1,
+  getBattleField_2,
   updateBattleField_1,
   updateBattleField_2,
 } from "../redux/warships/operations";
@@ -24,6 +26,7 @@ const useCheckCells = (cell) => {
     });
 
     dispatch(updateBattleField_1(checkedCells));
+    dispatch(getBattleField_2());
   };
 
   const handleCheckBF_2 = () => {
@@ -37,6 +40,7 @@ const useCheckCells = (cell) => {
     });
 
     dispatch(updateBattleField_2(checkedCells));
+    dispatch(getBattleField_1());
   };
 
   return { handleCheckBF_1, handleCheckBF_2 };
